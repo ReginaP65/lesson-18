@@ -32,12 +32,15 @@ test('login and create order', async ({}) => {
 })
 
 test('verify language at auth page', async ({}) => {
-  await authPage.verifyLanguageSelector()
+  await authPage.verifyFooterElements()
   // add footer verifications
 })
 
-test('verify language at order page', async ({}) => {
+test.only('verify language at order page', async ({}) => {
   const orderCreationPage = await authPage.signIn(USERNAME, PASSWORD)
-  await orderCreationPage.verifyLanguageSelector()
+  await orderCreationPage.verifyFooterElements()
   // add footer verifications
+  //searching order with orderId
+  const orderNotFoundPage = await orderCreationPage.fillOrderIdAndSearch('999')
+  await expect(orderNotFoundPage.orderNotFoundContainer).toBeVisible()
 })
