@@ -36,7 +36,7 @@ test('verify language at auth page', async ({}) => {
   // add footer verifications
 })
 
-test.only('verify language at order page', async ({}) => {
+test('verify language at order page', async ({}) => {
   const orderCreationPage = await authPage.signIn(USERNAME, PASSWORD)
   await orderCreationPage.verifyFooterElements()
   // add footer verifications
